@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Container } from "@ui";
 import { protectedRoutes, publicRoutes } from "routes";
 import { AuthLayout, Layout } from "@layout";
+import "bootstrap-icons/font/bootstrap-icons.scss";
 import "index.scss";
 
 ReactDOM.render(

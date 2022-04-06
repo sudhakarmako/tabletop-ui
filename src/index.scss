@@ -6,6 +6,7 @@ $text-light: #ffffff;
 $text-dark: #2b1c1580;
 $white: #ffffff;
 $black: #000000;
+$backdrop : #2b1c1580;
 
 * {
     margin: 0;
@@ -18,28 +19,21 @@ body {
     overflow: hidden;
     position: relative;
 
-    &.games {
+    &.game {
         background: url("./assets/img/bg-games.svg");
         background-color: "#000";
         background-repeat: no-repeat;
         background-size: cover;
     }
 
-    &.players {
+    &.player {
         background: url("./assets/img/bg-players.svg");
         background-color: "#000";
         background-repeat: no-repeat;
         background-size: cover;
     }
 
-    &.player {
-        background: url("./assets/img/bg-player.svg");
-        background-color: "#000";
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    &.sessions {
+    &.session {
         background: url("./assets/img/bg-sessions.svg");
         background-color: "#000";
         background-repeat: no-repeat;
@@ -54,6 +48,7 @@ body {
         left: 0;
         right: 0;
         backdrop-filter: blur(10px);
+        background-color: $backdrop;
         z-index: -1;
     }
 
@@ -69,9 +64,14 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition-duration: 300ms;
     color:$text-light;
     user-select: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
 }

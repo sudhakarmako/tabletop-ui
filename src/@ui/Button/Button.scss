@@ -1,0 +1,18 @@
+.button {
+    background: #ffffff1a;
+    border: 1px solid #C6BAB5;
+    backdrop-filter: blur(4px);
+    font-size: 0.875em;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 1em;
+    cursor: pointer;
+    padding: 1em;
+
+    &:hover {
+        backdrop-filter: blur(8px);
+        background: #ffffff4a;
+    }
+
+    transition: 100ms cubic-bezier(0.98, 0.02, 0, 1.02);
+}
