@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Container } from "@ui";
-import { routes } from "routes";
+import { protectedRoutes, publicRoutes } from "routes";
+import { AuthLayout, Layout } from "@layout";
 import "index.scss";
 
 ReactDOM.render(
@@ -10,8 +11,11 @@ ReactDOM.render(
     <Container>
       <BrowserRouter>
         <Routes>
-          {routes.map(({ path, element }) => (
-            <Route path={path} element={element} />
+          {publicRoutes.map(({ path, element }) => (
+            <Route path={path} element={<Layout>{element}</Layout>} />
+          ))}
+          {protectedRoutes.map(({ path, element }) => (
+            <Route path={path} element={<AuthLayout>{element}</AuthLayout>} />
           ))}
         </Routes>
       </BrowserRouter>

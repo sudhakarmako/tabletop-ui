@@ -2,17 +2,23 @@ import {
   Game,
   Games,
   Home,
+  Login,
   PageNotFound,
   Player,
   Players,
+  Register,
   Session,
   Sessions,
 } from "pages";
 import { RouteObject } from "react-router-dom";
 
-export const routes: RouteObject[] = [
+export const protectedRoutes: RouteObject[] = [
   {
     path: "/",
+    element: <Home />,
+  },
+  {
+    path: "home",
     element: <Home />,
   },
   {
@@ -50,6 +56,17 @@ export const routes: RouteObject[] = [
   {
     path: "player/:playerId",
     element: <Player />,
+  },
+];
+
+export const publicRoutes: RouteObject[] = [
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "register",
+    element: <Register />,
   },
   {
     path: "*",
