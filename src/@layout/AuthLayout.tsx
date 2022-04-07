@@ -16,6 +16,9 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     if (pathname.includes("player")) {
       document.body.classList.add("player");
     }
+    if (pathname === "/") {
+      document.body.classList.add("game");
+    }
   };
   useEffect(() => {
     if (pathname) changeBG(pathname);
