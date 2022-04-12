@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 
-$primary: #C6BAB5;
-$secondary: #856050;
-$text-light: #ffffff;
-$text-dark: #2b1c1580;
-$white: #ffffff;
-$black: #000000;
-$backdrop : #2b1c1580;
+@import "./scss/variable.scss";
 
 * {
     margin: 0;
