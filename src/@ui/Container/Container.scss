@@ -1,4 +1,14 @@
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    overflow-y: scroll;
+    max-height: calc(100vh - 1px);
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    
+    /* Firefox */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
