@@ -1,0 +1,103 @@
+@import "scss/variable.scss";
+
+.card {
+    padding: 0.5em;
+    margin: 0.25em;
+    margin-bottom: 1.25em;
+    background: #ffffff1a;
+    border: 1px solid $primary;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 0px 2px #c6bab533;
+    backdrop-filter: blur(4px);
+    transition: 200ms ease-in-out;
+
+    .card-img {
+        padding: 0.5em;
+        border: 1px solid #C6BAB5;
+        height: 225px;
+        width: 100%;
+    }
+
+    .card-title {
+        font-weight: bold;
+        line-height: 1.5em;
+        color: $white;
+    }
+
+    .card-text {
+        font-size: 0.75em;
+        height: 3.5em;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        font-weight: lighter;
+        color: $white;
+    }
+
+    .card-action {
+        background: linear-gradient(94.99deg, #ACA199 9.04%, #856050 90.96%);
+        border: 1px solid #C6BAB5;
+        border-left: none;
+        border-right: none;
+        box-sizing: border-box;
+        padding: 0.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        margin: 0 auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -19px;
+
+        span {
+            text-align: center;
+            margin: 0 0.25em;
+            color: $white;
+
+            &.count {
+                font-weight: bolder;
+            }
+        }
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 18px solid transparent;
+            border-bottom: 18px solid transparent;
+            border-right: 18px solid #ACA199;
+            left: -18px;
+        }
+
+        &::after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 18px solid transparent;
+            border-bottom: 18px solid transparent;
+            border-left: 18px solid #856050;
+            right: -18px;
+        }
+
+    }
+
+    &:hover {
+        transform: scale(1.025);
+        transition: 150ms ease-in-out;
+
+        .card-action::before {
+            left: -18px;
+        }
+
+        .card-action::after {
+            right: -18px;
+        }
+
+        .card-action {
+            background: linear-gradient(94.99deg, #ACA199 8.04%, #856050 91.96%);
+        }
+    }
+}
