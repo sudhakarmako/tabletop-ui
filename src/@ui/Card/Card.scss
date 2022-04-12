@@ -1,0 +1,11 @@
+@import "scss/variable.scss";
+
+.card {
+    padding: 0.5em;
+    margin: 0.25em;
+    background: #ffffff1a;
+    border: 1px solid $primary;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 0px 2px #c6bab533;
+    backdrop-filter: blur(4px);
+}
