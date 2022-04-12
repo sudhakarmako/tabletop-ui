@@ -1,7 +1,6 @@
 import {
   Game,
   Games,
-  Home,
   Login,
   PageNotFound,
   Player,
@@ -15,11 +14,11 @@ import { RouteObject } from "react-router-dom";
 export const protectedRoutes: RouteObject[] = [
   {
     path: "/",
-    element: <Home />,
+    element: <Games />,
   },
   {
     path: "home",
-    element: <Home />,
+    element: <Games />,
   },
   {
     path: "games",
