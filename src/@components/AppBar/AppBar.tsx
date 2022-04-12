@@ -1,4 +1,4 @@
-import { Button } from "@ui";
+import { Button, Container } from "@ui";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -21,35 +21,37 @@ const AppBar = ({ pathname }: { pathname: string }) => {
     }
   }, [pathname]);
   return (
-    <nav className="nav">
-      <ul className="nav-list nav-left">
-        <li className="nav-item" onClick={moveIndicator}>
-          <Link to="/games">GAMES</Link>
-        </li>
-        <li className="nav-item" onClick={moveIndicator}>
-          <Link to="/sessions">SESSIONS</Link>
-        </li>
-        <li className="nav-item" onClick={moveIndicator}>
-          <Link to="/players">PLAYERS</Link>
-        </li>
-        <div className="nav-indicator" style={indicatorPos}></div>
-      </ul>
-      <ul className="nav-list nav-right">
-        <li className="nav-item">
-          <Button>
-            <i className="bi bi-search"></i>
-          </Button>
-        </li>
-        <li className="nav-item">
-          <Button>ADD NEW GAME</Button>
-        </li>
-        <li className="nav-item">
-          <Button>
-            <i className="bi bi-person"></i>
-          </Button>
-        </li>
-      </ul>
-    </nav>
+    <Container>
+      <nav className="nav">
+        <ul className="nav-list nav-left">
+          <li className="nav-item" onClick={moveIndicator}>
+            <Link to="/games">GAMES</Link>
+          </li>
+          <li className="nav-item" onClick={moveIndicator}>
+            <Link to="/sessions">SESSIONS</Link>
+          </li>
+          <li className="nav-item" onClick={moveIndicator}>
+            <Link to="/players">PLAYERS</Link>
+          </li>
+          <div className="nav-indicator" style={indicatorPos}></div>
+        </ul>
+        <ul className="nav-list nav-right">
+          <li className="nav-item">
+            <Button>
+              <i className="bi bi-search"></i>
+            </Button>
+          </li>
+          <li className="nav-item">
+            <Button>ADD NEW GAME</Button>
+          </li>
+          <li className="nav-item">
+            <Button>
+              <i className="bi bi-person"></i>
+            </Button>
+          </li>
+        </ul>
+      </nav>
+    </Container>
   );
 };
 
