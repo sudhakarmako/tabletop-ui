@@ -1,0 +1,39 @@
+@import "scss/variable.scss";
+
+.chip-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba($color: $primary, $alpha: 0.8);
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba($color: $primary, $alpha: 0.05);
+    }
+}
+
+.chip-image {
+    width: 2em;
+    height: 2em;
+    border: 1px solid rgba($color: $primary, $alpha: 0.8);
+    padding: 0.1em;
+    margin: 0.5em;
+}
+
+.chip-content {
+    font-size: 0.85em;
+    font-weight: bold;
+    max-width: 7em;
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chip-close {
+    margin-inline-start: 1em;
+    color: $primary;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 0.6em;
+    margin: 0.5em;
+    margin-left: 1em;
+}
