@@ -16,7 +16,7 @@ const Col = ({ sm, md, lg, xl, xxl, children }: ColType) => {
   ColClassName += !!md ? ` col-md-${md}` : "";
   ColClassName += !!lg ? ` col-lg-${lg}` : "";
   ColClassName += !!xl ? ` col-xl-${xl}` : "";
-  ColClassName += !!xxl ? ` col-xl-${xxl}` : !!xl ? ` col-xxl-${xl}` : "";
+  ColClassName += !!xxl ? ` col-xxl-${xxl}` : !!xl ? ` col-xxl-${xl}` : "";
 
   return <div className={ColClassName}>{children}</div>;
 };
