@@ -1,0 +1,67 @@
+@import "scss/variable.scss";
+
+.player-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba($color: $primary, $alpha: 0.8);
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba($color: $primary, $alpha: 0.1);
+    }
+}
+
+.player-image {
+    width: 3.5em;
+    height: 3.5em;
+    border: 1px solid rgba($color: $primary, $alpha: 0.8);
+    padding: 0.1em;
+    margin: 0.5em;
+    margin-right: 1em;
+}
+
+.player-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 1em;
+
+    p {
+        font-size: 1em;
+        line-height: 1.75em;
+    }
+}
+
+.player-action {
+
+    display: flex;
+    flex-direction: column;
+
+    button {
+        display: flex;
+        align-items: center;
+        background: none;
+        border: none;
+        color: $white;
+        padding: 0.75em;
+        border-bottom: 1px solid rgba($color: $primary, $alpha: 0.8);
+        font-size: 0.875rem;
+        cursor: pointer;
+        opacity: 0.8;
+
+        i {
+            margin-right: 1em;
+        }
+
+        &.remove-player {
+            color: $danger;
+            border: none;
+
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

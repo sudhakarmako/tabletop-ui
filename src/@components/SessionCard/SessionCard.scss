@@ -1,0 +1,66 @@
+@import "scss/variable.scss";
+
+.session-card {
+    background: rgba($color: $primary, $alpha: 0.05);
+    border: 1px solid rgba($color: $primary, $alpha: 0.8);
+    backdrop-filter: blur(4px);
+    padding: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    margin-bottom: 0.5em;
+    margin-right: 1em;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba($color: $primary, $alpha: 0.2);
+    }
+
+    i {
+        font-size: 1.75em;
+        color: $primary;
+    }
+
+    .session-id {
+        display: flex;
+        align-items: center;
+
+        h3 {
+            margin: 0.25em 0.5em;
+            font-weight: normal;
+            font-size: 1.25em;
+            line-height: 2em;
+        }
+    }
+
+    .session-players {
+        display: flex;
+        align-items: center;
+
+        h3 {
+            margin: 0.25em 0.5em;
+            font-weight: normal;
+            font-size: 1.25em;
+            line-height: 2em;
+        }
+    }
+
+    .session-timings {
+        color: $primary;
+        font-weight: lighter;
+        width: 45%;
+        max-width: 200px;
+
+        p {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.3em;
+
+            strong {
+                font-weight: normal;
+            }
+        }
+
+    }
+}

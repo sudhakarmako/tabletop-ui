@@ -83,21 +83,4 @@
         }
 
     }
-
-    &:hover {
-        transform: scale(1.025);
-        transition: 150ms ease-in-out;
-
-        .card-action::before {
-            left: -18px;
-        }
-
-        .card-action::after {
-            right: -18px;
-        }
-
-        .card-action {
-            background: linear-gradient(94.99deg, #ACA199 8.04%, #856050 91.96%);
-        }
-    }
 }
