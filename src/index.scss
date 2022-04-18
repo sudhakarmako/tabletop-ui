@@ -6,6 +6,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    --swiper-navigation-color: $primary;
+    --swiper-pagination-color: $primary;
 }
 
 body {
