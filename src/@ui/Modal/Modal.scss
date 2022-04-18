@@ -1,0 +1,50 @@
+@import "scss/variable.scss";
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background-color: $backdrop;
+    backdrop-filter: blur(10px);
+}
+
+.modal {
+    width: 60%;
+    min-width: 600px;
+    height: 60%;
+    min-height: 600px;
+    border: 1px solid rgba($color: $primary, $alpha: 0.5);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    transform-style: preserve-3d;
+
+    .modal-close {
+        padding: 0.5em;
+        font-size: 1em;
+        background-color: transparent;
+        border: 1px solid rgba($color: $primary, $alpha: 0.5);
+        color: $primary;
+        position: absolute;
+        right: -34px;
+        top: -1px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba($color: $primary, $alpha: 0.2);
+        }
+    }
+
+    .modal-body {
+        margin: 2px;
+        height: calc(100% - 4px);
+        background-color: rgba($color: $black, $alpha: 0.2);
+        overflow-y: scroll;
+    }
+
+}
