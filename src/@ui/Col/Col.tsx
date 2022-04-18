@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import "./Col.scss";
 
 type ColType = {
@@ -7,7 +6,7 @@ type ColType = {
   lg?: number;
   xl?: number;
   xxl?: number;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 const Col = ({ sm, md, lg, xl, xxl, children }: ColType) => {
@@ -19,14 +18,6 @@ const Col = ({ sm, md, lg, xl, xxl, children }: ColType) => {
   ColClassName += !!xxl ? ` col-xxl-${xxl}` : !!xl ? ` col-xxl-${xl}` : "";
 
   return <div className={ColClassName}>{children}</div>;
-};
-
-Col.propTypes = {
-  sm: PropTypes.number,
-  md: PropTypes.number,
-  lg: PropTypes.number,
-  xl: PropTypes.number,
-  xxl: PropTypes.number,
 };
 
 export default Col;
