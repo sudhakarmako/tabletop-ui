@@ -1,10 +1,12 @@
 import "./SessionCard.scss";
 
 type SessionCardType = {
-  sessionId?: string;
+  sessionId: number;
   players?: string;
   startTime?: string;
   stopTime?: string;
+  setSessionDetail: React.Dispatch<React.SetStateAction<number | null>>;
+  setSessionModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const SessionCard = ({
@@ -12,9 +14,15 @@ const SessionCard = ({
   players,
   startTime,
   stopTime,
+  setSessionModal,
+  setSessionDetail,
 }: SessionCardType) => {
+  const onHandleClick = (id: number) => {
+    setSessionModal(true);
+    setSessionDetail(id);
+  };
   return (
-    <div className="session-card">
+    <div className="session-card" onClick={() => onHandleClick(sessionId)}>
       <div className="session-id">
         <i className="bi bi-hash"></i>
         <h3>{sessionId}</h3>

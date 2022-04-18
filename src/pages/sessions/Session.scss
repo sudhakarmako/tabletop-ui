@@ -1,0 +1,35 @@
+@import "scss/variable.scss";
+
+.session-container {
+    padding: 1em;
+
+    h2 {
+        margin: 1em 0;
+        margin-left: 0.25em;
+        font-weight: 500;
+        list-style: 1.5em;
+
+        &.player {
+            border-bottom: 1px solid $primary;
+            padding-bottom: 0.5em;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            span {
+                font-size: 1em;
+                font-weight: normal;
+                color: $primary;
+
+                i {
+                    margin-right: 0.5em;
+                }
+            }
+        }
+    }
+
+    p {
+        margin-left: 0.25em;
+        margin-bottom: 1em;
+    }
+}

@@ -1,8 +1,14 @@
-import { PlayerCard, SessionCard } from "@components";
-import { Chip, Container, Row } from "@ui";
-import { Col } from "@ui/Col";
+import { PlayerCard, SessionCard, SessionTitle } from "@components";
+import { Chip, Row, Col, Modal } from "@ui";
+import { Player } from "pages/player";
+import { useState } from "react";
+import Session from "./Session";
 
 const Sessions = () => {
+  const [sessionModal, setSessionModal] = useState<boolean>(false);
+  const [sessionDetail, setSessionDetail] = useState<number | null>(null);
+  const [playerModal, setPlayerModal] = useState<boolean>(false);
+  const [playerDetail, setPlayerDetail] = useState<number | null>(null);
   return (
     <>
       <Row justify={"space-between"}>
@@ -25,18 +31,24 @@ const Sessions = () => {
         <Col sm={12} md={12} lg={5} xl={5} xxl={5}>
           {Array.apply(null, Array(10)).map(() => (
             <SessionCard
-              sessionId="2452"
+              sessionId={2452}
               players="24"
               startTime="12:24 PM"
               stopTime="14.35 PM"
+              setSessionModal={setSessionModal}
+              setSessionDetail={setSessionDetail}
             />
           ))}
         </Col>
         <Col sm={12} md={12} lg={7} xl={7} xxl={7}>
+          <SessionTitle />
           <Row justify="space-evenly">
             {Array.apply(null, Array(10)).map(() => (
               <Col sm={12} md={6} lg={6} xl={6} xxl={6}>
                 <PlayerCard
+                  setPlayerModal={setPlayerModal}
+                  setPlayerDetail={setPlayerDetail}
+                  playerId={1}
                   avatarUrl={
                     "https://cf.geekdo-images.com/3HkjDovk8Yr2wMumcSUGog__itemrep/img/WE_jrFpy57ekZuiIKFIMpNfXIXQ=/fit-in/246x300/filters:strip_icc()/pic4843622.jpg"
                   }
@@ -46,6 +58,12 @@ const Sessions = () => {
           </Row>
         </Col>
       </Row>
+      <Modal open={sessionModal} onClose={() => setSessionModal(false)}>
+        <Session sessionDetail={sessionDetail} />
+      </Modal>
+      <Modal open={playerModal} onClose={() => setPlayerModal(false)}>
+        <Player playerDetail={playerDetail}/>
+      </Modal>
     </>
   );
 };
