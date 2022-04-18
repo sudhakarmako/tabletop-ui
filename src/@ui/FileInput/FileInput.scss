@@ -1,0 +1,46 @@
+@import "scss/variable.scss";
+
+.input-file {
+    display: block;
+    margin-bottom: 1.5em;
+
+    .file-label {
+        display: block;
+        font-size: 1em;
+        line-height: 1.5em;
+        margin-bottom: 0.25em;
+    }
+
+    label {
+        display: block;
+        width: 200px;
+        height: 200px;
+        background-color: rgba($color: $primary, $alpha: 0.4);
+        border: 1px solid rgba($color: $primary, $alpha: 0.6);
+        padding: 0.5em;
+        font-size: 1.25em;
+        line-height: 1.25em;
+        color: $white;
+        letter-spacing: 0.5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .file-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .file-icon {
+                margin: 1em 0;
+                font-size: 2em;
+                color: $primary;
+            }
+        }
+    }
+
+    input {
+        display: none
+    }
+}
