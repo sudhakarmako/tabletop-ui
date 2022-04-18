@@ -3,7 +3,7 @@
 .card {
     padding: 0.5em;
     margin: 0.25em;
-    margin-bottom: 1.25em;
+    margin-bottom: 2em;
     background: #ffffff1a;
     border: 1px solid $primary;
     box-sizing: border-box;
@@ -11,13 +11,24 @@
     backdrop-filter: blur(4px);
     transition: 200ms ease-in-out;
 
-    .card-img {
-        padding: 0.5em;
+    .card-img-container {
+        padding: 0.25em;
         border: 1px solid #C6BAB5;
-        height: 225px;
+        margin-bottom: 0.5em;
+        }
+        
+        .card-img {
+            height: 165px;
         width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
 
+    .card-body {
+        height: 4em;
+        margin-bottom: 1.25rem;
+        overflow: hidden;
+    }
     .card-title {
         font-weight: bold;
         line-height: 1.5em;
@@ -25,10 +36,8 @@
     }
 
     .card-text {
+    
         font-size: 0.75em;
-        height: 3.5em;
-        margin-bottom: 1rem;
-        overflow: hidden;
         font-weight: lighter;
         color: $white;
     }

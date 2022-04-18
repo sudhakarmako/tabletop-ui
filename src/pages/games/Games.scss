@@ -1,0 +1,71 @@
+@import "scss/variable.scss";
+
+.swiper {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gameSlider {
+    height: 300px;
+}
+
+.gameThumbs .swiper-slide {
+    height: 100px;
+    opacity: 0.4;
+}
+
+.gameThumbs .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+.game-swiper-container {
+    margin: 0.5em 0;
+}
+
+.game-container {
+    padding: 0.5em;
+
+    .game-title {
+        font-size: 2em;
+        font-weight: 600;
+        line-height: 2em;
+        margin-bottom: 0.5em;
+    }
+
+    .game-body {
+
+        h2.description {
+            border-bottom: 2px solid $primary;
+            font-weight: 500;
+            padding-bottom: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        ol,
+        ul {
+            padding-left: 1em;
+
+            li {
+                line-height: 1.5em;
+            }
+        }
+    }
+}

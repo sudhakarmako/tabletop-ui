@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import "./GameCard.scss";
 
 type GameCardType = {
-  children?: React.ReactNode;
   game: {
     id: number;
     image: string;
@@ -10,21 +8,35 @@ type GameCardType = {
     title: string;
     shortDes: string;
   };
+  setGameDetail: React.Dispatch<React.SetStateAction<number | null>>;
+  setGameModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const GameCard = ({ game, children }: GameCardType) => {
+const GameCard = ({ game, setGameDetail, setGameModal }: GameCardType) => {
+  const onHandleClick = (id: number) => {
+    setGameDetail(id);
+    setGameModal(true);
+  };
   return (
-    <Link to="/">
-      <div className="card">
-        <img className="card-img" src={game.image} />
+    <div className="card" onClick={() => onHandleClick(game.id)}>
+      <div className="card-img-container">
+        <div
+          className="card-img"
+          style={{
+            backgroundImage: `url("${game.image}")`,
+          }}
+        ></div>
+      </div>
+      <div className="card-body">
         <h5 className="card-title">{game.title}</h5>
         <p className="card-text">
-          {game.shortDes} <strong>more</strong>
+          {game.shortDes.substring(0, game.title.length > 20 ? 45 : 75)}...{" "}
+          <strong>more</strong>
         </p>
-        <div className="card-action">
-          <span className="count">{game.count}</span> <span>Sessions</span>
-        </div>
       </div>
-    </Link>
+      <div className="card-action">
+        <span className="count">{game.count}</span> <span>Sessions</span>
+      </div>
+    </div>
   );
 };
 
