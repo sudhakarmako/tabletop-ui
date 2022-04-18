@@ -1,19 +1,22 @@
 import { PlayerCard } from "@components";
-import { Chip, Row } from "@ui";
-import { Col } from "@ui/Col";
+import { Chip, Modal, Row, Col } from "@ui";
+import { useState } from "react";
+import Player from "./Player";
 
 const Players = () => {
+  const [playerModal, setPlayerModal] = useState<boolean>(false);
+  const [playerDetail, setPlayerDetail] = useState<number | null>(null);
   return (
     <>
       <Row justify={"space-between"}>
         <Row>
-          <Chip
+          {/* <Chip
             image={
               "https://cf.geekdo-images.com/3HkjDovk8Yr2wMumcSUGog__itemrep/img/WE_jrFpy57ekZuiIKFIMpNfXIXQ=/fit-in/246x300/filters:strip_icc()/pic4843622.jpg"
             }
           >
             Raiders of the North Sea
-          </Chip>
+          </Chip> */}
         </Row>
         <p>
           Total Players: <strong>234</strong>
@@ -25,6 +28,9 @@ const Players = () => {
         {Array.apply(null, Array(10)).map(() => (
           <Col sm={12} md={6} lg={4} xl={4} xxl={4}>
             <PlayerCard
+              playerId={1}
+              setPlayerModal={setPlayerModal}
+              setPlayerDetail={setPlayerDetail}
               avatarUrl={
                 "https://cf.geekdo-images.com/3HkjDovk8Yr2wMumcSUGog__itemrep/img/WE_jrFpy57ekZuiIKFIMpNfXIXQ=/fit-in/246x300/filters:strip_icc()/pic4843622.jpg"
               }
@@ -32,6 +38,9 @@ const Players = () => {
           </Col>
         ))}
       </Row>
+      <Modal open={playerModal} onClose={() => setPlayerModal(false)}>
+        <Player playerDetail={playerDetail} />
+      </Modal>
     </>
   );
 };

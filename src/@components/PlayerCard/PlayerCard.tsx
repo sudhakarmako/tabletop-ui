@@ -1,16 +1,30 @@
 import "./PlayerCard.scss";
 
 type PlayerCardType = {
+  playerId: number;
   name?: string;
   avatarUrl?: string;
   phone?: string;
+  setPlayerDetail: React.Dispatch<React.SetStateAction<number | null>>;
+  setPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const PlayerCard = ({ name, avatarUrl, phone }: PlayerCardType) => {
+const PlayerCard = ({
+  playerId,
+  name,
+  avatarUrl,
+  phone,
+  setPlayerModal,
+  setPlayerDetail,
+}: PlayerCardType) => {
+  const onHandleClick = (id: number) => {
+    setPlayerModal(true);
+    setPlayerDetail(id);
+  };
   return (
-    <div className="player-container">
+    <div className="player-container" onClick={() => onHandleClick(playerId)}>
       <div className="player-content">
         {!!avatarUrl && (
-          <img className="player-image" src={avatarUrl} alt="player-image" />
+          <img className="player-image" src={avatarUrl} alt="player" />
         )}
         <div>
           <p>Joe Caputo</p>
