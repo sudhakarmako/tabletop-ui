@@ -1,0 +1,58 @@
+@import "scss/variable.scss";
+
+.select-container {
+    display: block;
+    margin-bottom: 1.5em;
+
+    label {
+        display: block;
+        font-size: 1em;
+        line-height: 1.5em;
+        margin-bottom: 0.25em;
+    }
+
+    .select-body {
+        width: 80%;
+        background-color: rgba($color: $primary, $alpha: 0.4);
+        border: 1px solid rgba($color: $primary, $alpha: 0.6);
+        font-size: 1.25em;
+        line-height: 1.25em;
+        color: $white;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding: 0.5em;
+        cursor: pointer;
+
+        i {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0.25em;
+            line-height: 1.75em;
+        }
+
+        .select-list {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 90%;
+
+        }
+
+        .select-option {
+            padding: 0.5em;
+            background-color: $white;
+            color: $black;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $primary;
+                color: $white;
+            }
+        }
+    }
+
+
+
+
+}
