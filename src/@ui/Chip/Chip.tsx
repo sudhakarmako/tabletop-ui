@@ -7,7 +7,7 @@ type ChipInteface = {
 const Chip = ({ image, children }: ChipInteface) => {
   return (
     <div className="chip-container">
-      {!!image && <img className="chip-image" src={image} alt="chip-image" />}
+      {!!image && <img className="chip-image" src={image} alt="chip" />}
       <div className="chip-content">
         {children && children?.length > 26
           ? children?.substring(0, 26) + "..."
