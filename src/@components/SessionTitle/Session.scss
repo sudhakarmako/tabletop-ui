@@ -1,0 +1,33 @@
+@import "scss/variable.scss";
+
+.session-single-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+
+    h3 {
+        font-size: 1.5em;
+        font-weight: 500;
+    }
+
+    .session-title-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            cursor: pointer;
+            padding: 0.5em;
+            border: none;
+            background-color: transparent;
+            color: $white;
+            font-size: 1.5em;
+            font-weight: 500;
+        }
+
+        i {
+            color: $primary;
+        }
+    }
+}
