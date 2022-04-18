@@ -1,0 +1,30 @@
+@import "scss/variable.scss";
+
+.input-text {
+    display: block;
+    margin-bottom: 1.5em;
+
+    label {
+        display: block;
+        font-size: 1em;
+        line-height: 1.5em;
+        margin-bottom: 0.25em;
+    }
+
+    input {
+        width: 80%;
+        background-color: rgba($color: $primary, $alpha: 0.4);
+        border: 1px solid rgba($color: $primary, $alpha: 0.6);
+        padding: 0.5em;
+        font-size: 1.25em;
+        line-height: 1.25em;
+        color: $white;
+        letter-spacing: 0.5px;
+
+        &:active,
+        &:focus,
+        &:focus-visible {
+            border: 1px solid rgba($color: $primary, $alpha: 1);
+        }
+    }
+}
