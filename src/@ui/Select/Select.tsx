@@ -21,6 +21,7 @@ const Select = ({ label, name, onChange, value, options }: SelectType) => {
   });
   useEffect(() => {
     value && setSelected(value);
+    console.log(selectValue);
   }, [value]);
 
   const handleClick = (name: string, value: string) => {

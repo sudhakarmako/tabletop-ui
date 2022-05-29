@@ -1,5 +1,5 @@
 import { PlayerCard } from "@components";
-import { Chip, Modal, Row, Col } from "@ui";
+import { Modal, Row, Col } from "@ui";
 import { useState } from "react";
 import Player from "./Player";
 
