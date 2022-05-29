@@ -4,7 +4,7 @@ export default class API {
   public _resource: string | "";
 
   constructor(resource: string | "") {
-    this._baseURL = process.env.apiURL;
+    this._baseURL = process.env.REACT_APP_API_URL;
     this._resource = resource || "";
   }
 
