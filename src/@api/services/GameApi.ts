@@ -1,6 +1,6 @@
 import { API } from "@api";
 
-export default class GamesAPI extends API {
+export default class GameAPI extends API {
   constructor() {
     super("/games");
   }

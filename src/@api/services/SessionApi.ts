@@ -1,6 +1,6 @@
 import { API } from "@api";
 
-export default class SessionsAPI extends API {
+export default class SessionAPI extends API {
   constructor() {
     super("/sessions");
   }

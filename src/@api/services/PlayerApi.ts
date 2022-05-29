@@ -1,6 +1,6 @@
 import { API } from "@api";
 
-export default class PlayersAPI extends API {
+export default class PlayerAPI extends API {
   constructor() {
     super("/players");
   }
