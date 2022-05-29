@@ -22,15 +22,23 @@ export default class API {
    * @returns fetch promise
    */
   async request(path: string, options?: object) {
+    let request = null;
+    let response = null;
     const headers = new Headers({
       Accept: "application/json",
       "Content-Type": "application/json",
     });
 
-    return await fetch(this.makeURL(path), {
-      headers,
-      ...options,
-    });
+    try {
+      request = await fetch(this.makeURL(path), {
+        headers,
+        ...options,
+      });
+      response = request.json();
+    } catch (error) {
+      response = Promise.reject(error);
+    }
+    return response;
   }
 
   /**
