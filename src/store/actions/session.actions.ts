@@ -1,0 +1,5 @@
+export const getSessionsAction = () => console.log('getSessionsActions')
+export const getSessionAction = () => console.log('getSessionActions')
+export const addSessionAction = () => console.log('addSessionActions')
+export const updateSessionAction = () => console.log('updateSessionActions')
+export const deleteSessionAction = () => console.log('deleteSessionActions')

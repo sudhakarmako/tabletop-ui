@@ -1,0 +1,5 @@
+export const getPlayersAction = () => console.log('getPlayersActions')
+export const getPlayerAction = () => console.log('getPlayerActions')
+export const addPlayerAction = () => console.log('addPlayerActions')
+export const updatePlayerAction = () => console.log('updatePlayerActions')
+export const deletePlayerAction = () => console.log('deletePlayerActions')
