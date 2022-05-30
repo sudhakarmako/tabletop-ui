@@ -16,16 +16,17 @@ const Games = () => {
   console.log("games", games);
   
   useEffect(() => {
-    dispatch(getGamesAction(""))
+    dispatch(getGamesAction("?_embed=session"))
   }, []);
   return (
     <>
       <Container>
         <Row>
-          {games.map((game) => {
+          {games.map((game, key) => {
             return (
               <Col sm={6} md={4} lg={4} xl={2}>
                 <GameCard
+                  key={key}
                   game={game}
                   setGameModal={setGameModal}
                   setGameDetail={setGameDetail}

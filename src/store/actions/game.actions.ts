@@ -9,7 +9,7 @@ export const getGamesAction = createAsyncThunk(
       req = await gameAPI.getGames(payload);
     } catch (error) {
       req = [];
-      console.log(error);
+      rejectWithValue(error);
     }
     return req;
   }
