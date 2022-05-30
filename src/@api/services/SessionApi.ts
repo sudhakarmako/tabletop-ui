@@ -1,6 +1,6 @@
 import { API } from "@api";
 
-export default class SessionAPI extends API {
+class SessionAPI extends API {
   constructor() {
     super("/sessions");
   }
@@ -42,3 +42,5 @@ export default class SessionAPI extends API {
    */
   deleteSessionById = async (id: number) => await this.delete(`/${id}`);
 }
+const sessionAPI = new SessionAPI();
+export default sessionAPI;

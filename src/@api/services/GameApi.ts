@@ -1,6 +1,6 @@
 import { API } from "@api";
 
-export default class GameAPI extends API {
+class GameAPI extends API {
   constructor() {
     super("/games");
   }
@@ -42,3 +42,5 @@ export default class GameAPI extends API {
    */
   deleteGameById = async (id: number) => await this.delete(`/${id}`);
 }
+const gameAPI = new GameAPI();
+export default gameAPI;
