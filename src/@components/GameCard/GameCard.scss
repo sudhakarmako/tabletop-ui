@@ -11,6 +11,11 @@
     backdrop-filter: blur(4px);
     transition: 200ms ease-in-out;
 
+    &:hover{
+        cursor: pointer;
+       filter: brightness(1.1);
+       box-shadow: 0px 0px 4px 4px #c6bab533;
+    }
     .card-img-container {
         padding: 0.25em;
         border: 1px solid #C6BAB5;
