@@ -15,11 +15,11 @@ ReactDOM.render(
     <Container>
       <BrowserRouter>
         <Routes>
-          {publicRoutes.map(({ path, element }) => (
-            <Route path={path} element={<Layout>{element}</Layout>} />
+          {publicRoutes.map(({ path, element }, key) => (
+            <Route key={key} path={path} element={<Layout>{element}</Layout>} />
           ))}
-          {protectedRoutes.map(({ path, element }) => (
-            <Route path={path} element={<AuthLayout>{element}</AuthLayout>} />
+          {protectedRoutes.map(({ path, element }, key) => (
+            <Route key={key} path={path} element={<AuthLayout>{element}</AuthLayout>} />
           ))}
         </Routes>
       </BrowserRouter>
