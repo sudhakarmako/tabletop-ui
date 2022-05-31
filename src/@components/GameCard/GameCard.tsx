@@ -22,7 +22,10 @@ type GameCardType = {
   setGameDetail: React.Dispatch<React.SetStateAction<number | null>>;
   setGameModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const GameCard = ({ game, setGameDetail, setGameModal }: GameCardType) => {
+const GameCard = ({ 
+  game, 
+  setGameDetail, 
+  setGameModal }: GameCardType) => {
   const onHandleClick = (id: number) => {
     setGameDetail(id);
     setGameModal(true);

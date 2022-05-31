@@ -20,6 +20,7 @@ const PlayerCard = ({
     setPlayerModal(true);
     setPlayerDetail(id);
   };
+  
   return (
     <div className="player-container" onClick={() => onHandleClick(playerId)}>
       <div className="player-content">

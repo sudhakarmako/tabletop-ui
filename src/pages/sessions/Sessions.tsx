@@ -1,14 +1,27 @@
 import { PlayerCard, SessionCard, SessionTitle } from "@components";
 import { Chip, Row, Col, Modal } from "@ui";
 import { Player } from "pages/player";
-import { useState } from "react";
+import { useEffect,useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "store";
+import { getSessionsAction } from "store/actions/session.actions";
+
 import Session from "./Session";
 
 const Sessions = () => {
+  const {sessions} = useSelector((state:RootState) => state.session)
+
   const [sessionModal, setSessionModal] = useState<boolean>(false);
   const [sessionDetail, setSessionDetail] = useState<number | null>(null);
   const [playerModal, setPlayerModal] = useState<boolean>(false);
   const [playerDetail, setPlayerDetail] = useState<number | null>(null);
+  const dispatch = useDispatch();
+
+  console.log("session", sessions);
+  
+  useEffect(() => {
+    dispatch(getSessionsAction("?_embed=session"))
+  }, []);
   return (
     <>
       <Row justify={"space-between"}>

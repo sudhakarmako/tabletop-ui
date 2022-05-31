@@ -2,7 +2,7 @@ import { API } from "@api";
 
 class PlayerAPI extends API {
   constructor() {
-    super("/players");
+    super("/player");
   }
 
   /**
