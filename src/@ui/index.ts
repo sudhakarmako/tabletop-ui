@@ -6,6 +6,7 @@ export { Col } from "./Col";
 export { Chip } from "./Chip";
 export { Modal } from "./Modal";
 export { Input } from "./Input";
+export { NumberInput } from "./NumberInput";
 export { DateInput } from "./DateInput";
 export { FileInput } from "./FileInput";
 export { Select } from "./Select";
