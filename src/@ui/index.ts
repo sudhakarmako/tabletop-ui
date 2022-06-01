@@ -7,6 +7,7 @@ export { Chip } from "./Chip";
 export { Modal } from "./Modal";
 export { Input } from "./Input";
 export { NumberInput } from "./NumberInput";
+export { Toggle } from "./Toggle";
 export { DateInput } from "./DateInput";
 export { FileInput } from "./FileInput";
 export { Select } from "./Select";
