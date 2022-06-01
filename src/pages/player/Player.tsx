@@ -1,48 +1,73 @@
-import { Chip, Col, DateInput, FileInput, Input, Row, Select } from "@ui";
-import { useState } from "react";
+import { Button, Chip, Col, DateInput, FileInput, Input, NumberInput, Row, Select } from "@ui";
+import dayjs from "dayjs";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "store";
 import "./Player.scss";
 
-type PlayerType = {
+type playerDetail = {
   playerDetail?: number | null;
 };
+type PlayerType = {
+    id: number,
+    first_name: string,
+    last_name: string,
+    dob: string,
+    age: number,
+    phone_number: string,
+    created_at: string,
+    updated_at: string,
+    is_active: boolean,
+    avatar: string
+  };
 
-const Player = ({ playerDetail }: PlayerType) => {
-  const [ageSelect, setAgeSelect] = useState("");
+const Player = ({ playerDetail }: playerDetail) => {
+const [playerData, setPlayerData] = useState<PlayerType>({
+  id: 0,
+  first_name: "",
+  last_name: "",
+  dob: "",
+  age: 0,
+  phone_number: "",
+  created_at: "",
+  updated_at: "",
+  is_active: false,
+  avatar: ""
+});
+const {players} = useSelector((state:RootState) => state.player);
+
+useEffect(() => {
+  if(playerDetail && players.length){
+    const [player] = players.filter((pl:any) => pl.id === playerDetail);
+    setPlayerData(player);
+  }
+}, [playerDetail, players]);
   return (
     <div className="single-player-container">
-      <Row>
-        <Chip image="https://randomuser.me/api/portraits/women/90.jpg">
-          Gabriella Lambert
+      <Row justify="space-between" align="flex-start">
+        <Chip image={playerData.avatar}>
+          {`${playerData.first_name} ${playerData.last_name}`}
         </Chip>
+        <Button>Update</Button>
       </Row>
       <Row align="flex-start">
         <Col sm={12} md={12} lg={7} xl={7} xxl={7}>
           <div className="input-container">
-            <Input label="First Name" name="fname" value="Gabriella" />
-            <Input label="Last Name" name="lname" value="Lambert" />
-            <Input label="Phone Number" name="phone" value="+07 658 312 387" />
+            <Input label="First Name" name="fname" value={playerData.first_name} />
+            <Input label="Last Name" name="lname" value={playerData.last_name} />
+            <Input label="Phone Number" name="phone" value={playerData.phone_number} />
             <DateInput
               label="Joined Date"
               name="joinedData"
-              value="2022-03-18"
+              value={dayjs(playerData.dob).format('YYYY-MM-DD')}
             />
           </div>
         </Col>
         <Col sm={12} md={12} lg={5} xl={5} xxl={5}>
           <div className="input-container">
-            <Select
-              label="Age"
-              name="age"
-              onChange={(e) => setAgeSelect(e)}
-              value={ageSelect}
-              options={[
-                { name: "3-5 age", value: "1" },
-                { name: "6-13 age", value: "1" },
-                { name: "13-18 age", value: "1" },
-                { name: "18+ age", value: "1" },
-              ]}
-            />
-            <FileInput label="Avatar" name="avatarUrl" />
+            <NumberInput label="Age" name="age" value={playerData.age} />
+            <FileInput label="Avatar" />
+            <Input label="Avater URL" name="avatarUrl" value={playerData.avatar} />
           </div>
         </Col>
       </Row>

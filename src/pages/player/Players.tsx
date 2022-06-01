@@ -1,11 +1,20 @@
 import { PlayerCard } from "@components";
 import { Modal, Row, Col } from "@ui";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Player from "./Player";
+import { useDispatch, useSelector } from "react-redux";
+import { getPlayersAction } from "store/actions/player.actions";
+import { RootState } from "store";
 
 const Players = () => {
   const [playerModal, setPlayerModal] = useState<boolean>(false);
   const [playerDetail, setPlayerDetail] = useState<number | null>(null);
+  const {players} = useSelector((state:RootState) => state.player)
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(getPlayersAction(""))
+  }, []);
   return (
     <>
       <Row justify={"space-between"}>
@@ -19,21 +28,19 @@ const Players = () => {
           </Chip> */}
         </Row>
         <p>
-          Total Players: <strong>234</strong>
+          Total Players: <strong>{players.length}</strong>
         </p>
       </Row>
       <br />
       <br />
       <Row>
-        {Array.apply(null, Array(10)).map(() => (
+        {players.map((player, key) => (
           <Col sm={12} md={6} lg={4} xl={4} xxl={4}>
             <PlayerCard
-              playerId={1}
+              key={key}
+              player={player}
               setPlayerModal={setPlayerModal}
               setPlayerDetail={setPlayerDetail}
-              avatarUrl={
-                "https://cf.geekdo-images.com/3HkjDovk8Yr2wMumcSUGog__itemrep/img/WE_jrFpy57ekZuiIKFIMpNfXIXQ=/fit-in/246x300/filters:strip_icc()/pic4843622.jpg"
-              }
             />
           </Col>
         ))}
