@@ -19,12 +19,12 @@ type GameCardType = {
       }
     ]
   };
-  setGameDetail: React.Dispatch<React.SetStateAction<number | null>>;
+  setGameId: React.Dispatch<React.SetStateAction<number |null>>;
   setGameModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
-const GameCard = ({ game, setGameDetail, setGameModal }: GameCardType) => {
+const GameCard = ({ game, setGameId, setGameModal }: GameCardType) => {
   const onHandleClick = (id: number) => {
-    setGameDetail(id);
+    setGameId(id);
     setGameModal(true);
   };
   return (

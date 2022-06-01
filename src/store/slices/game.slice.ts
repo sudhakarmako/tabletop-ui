@@ -19,7 +19,7 @@ export const gameSlice = createSlice({
     },
     getGame: (state, action: PayloadAction<number>) => {
       // GET SINGLE GAME
-      return getGameAction();
+      console.log(state, action);
     },
     addGame: (state, action: PayloadAction<object>) => {
       // ADDING A SINGLE GAME

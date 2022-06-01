@@ -10,10 +10,8 @@ import Game from "./Game";
 const Games = () => {
   const {games} = useSelector((state:RootState) => state.game)
   const [gameModal, setGameModal] = useState<boolean>(false);
-  const [gameDetail, setGameDetail] = useState<number | null>(null);
+  const [gameId, setGameId] = useState<number | null>(null);
   const dispatch  = useDispatch();
-
-  console.log("games", games);
   
   useEffect(() => {
     dispatch(getGamesAction("?_embed=session"))
@@ -29,7 +27,7 @@ const Games = () => {
                   key={key}
                   game={game}
                   setGameModal={setGameModal}
-                  setGameDetail={setGameDetail}
+                  setGameId={setGameId}
                 />
               </Col>
             );
@@ -37,7 +35,7 @@ const Games = () => {
         </Row>
       </Container>
       <Modal open={gameModal} onClose={() => setGameModal(false)}>
-        <Game gameDetail={gameDetail} />
+        <Game gameId={gameId} />
       </Modal>
     </>
   );
