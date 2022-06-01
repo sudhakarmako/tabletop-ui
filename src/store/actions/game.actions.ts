@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getGamesAction = createAsyncThunk(
   "game/getGames",
-  async (payload: string | "", { rejectWithValue, getState, dispatch }) => {
+  async (payload: string | "", { rejectWithValue }) => {
     let req: [];
     try {
       req = await gameAPI.getGames(payload);
