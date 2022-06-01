@@ -1,46 +1,66 @@
 @import "scss/variable.scss";
 
 .input-file {
+  display: block;
+  margin-bottom: 1.5em;
+
+  .file-label {
     display: block;
-    margin-bottom: 1.5em;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin-bottom: 0.25em;
+  }
 
-    .file-label {
-        display: block;
-        font-size: 1em;
-        line-height: 1.5em;
-        margin-bottom: 0.25em;
+  .img-preview {
+    position: relative;
+    background-repeat: no-repeat;
+    display: inline-flex;
+    background-size: cover;
+    &::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba($color: #000000, $alpha: 0.6);
+      z-index: 0;
     }
+  }
 
-    label {
-        display: block;
-        width: 200px;
-        height: 200px;
-        background-color: rgba($color: $primary, $alpha: 0.4);
-        border: 1px solid rgba($color: $primary, $alpha: 0.6);
-        padding: 0.5em;
-        font-size: 1.25em;
-        line-height: 1.25em;
-        color: $white;
-        letter-spacing: 0.5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+  label {
+    width: 200px;
+    height: 200px;
+    background-color: rgba($color: $primary, $alpha: 0.4);
+    border: 1px solid rgba($color: $primary, $alpha: 0.6);
+    padding: 0.5em;
+    font-size: 1.25em;
+    line-height: 1.25em;
+    color: $white;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    backdrop-filter: blur(4);
 
-        .file-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+    .file-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-            .file-icon {
-                margin: 1em 0;
-                font-size: 2em;
-                color: $primary;
-            }
-        }
+      .file-icon {
+        margin: 1em 0;
+        font-size: 2em;
+        color: $primary;
+      }
     }
+  }
 
-    input {
-        display: none
-    }
+  input {
+    display: none;
+  }
 }
