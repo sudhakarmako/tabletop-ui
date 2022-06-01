@@ -1,18 +1,23 @@
 import "./PlayerCard.scss";
 
 type PlayerCardType = {
-  playerId: number;
-  name?: string;
-  avatarUrl?: string;
-  phone?: string;
+  player:{
+    id: number,
+    first_name: string,
+    last_name: string,
+    dob: string,
+    age: number,
+    phone_number: string,
+    created_at: string,
+    updated_at: string,
+    is_active: boolean,
+    avatar: string
+  },
   setPlayerDetail: React.Dispatch<React.SetStateAction<number | null>>;
   setPlayerModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const PlayerCard = ({
-  playerId,
-  name,
-  avatarUrl,
-  phone,
+  player,
   setPlayerModal,
   setPlayerDetail,
 }: PlayerCardType) => {
@@ -21,18 +26,18 @@ const PlayerCard = ({
     setPlayerDetail(id);
   };
   return (
-    <div className="player-container" onClick={() => onHandleClick(playerId)}>
+    <div className="player-container">
       <div className="player-content">
-        {!!avatarUrl && (
-          <img className="player-image" src={avatarUrl} alt="player" />
+        {!!player.avatar && (
+          <img className="player-image" src={player.avatar} alt="player" />
         )}
         <div>
-          <p>Joe Caputo</p>
-          <p>+07 658 312 387</p>
+          <p>{`${player.first_name} ${player.last_name}`}</p>
+          <p>{`${player.phone_number ?? '---'}`}</p>
         </div>
       </div>
       <div className="player-action">
-        <button className="edit-player">
+        <button className="edit-player" onClick={() => onHandleClick(player.id)}>
           <i className="bi bi-pencil-square"></i> Edit
         </button>
         <button className="remove-player">
