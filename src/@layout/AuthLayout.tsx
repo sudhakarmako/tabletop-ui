@@ -1,15 +1,12 @@
 import { AppBar } from "@components";
-import { Button, Modal } from "@ui";
-import { Player } from "pages";
-import { useCallback, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Button } from "@ui";
+import { useCallback, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   let { pathname } = useLocation();
-  const [openNewPlayer, setOpenNewPlayer] = useState(false);
-  const [openNewSession, setOpenNewSession] = useState(false);
-  const [openNewGame, setOpenNewGame] = useState(false);
 
+  // CHANGES THE BACKGROUND IMAGE OF THE PAGE
   const changeBG = (pathname: string) => {
     document.body.className = "";
     if (pathname.includes("session")) {
@@ -26,18 +23,19 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
+  // CHANGES THE RIGHT ACTION BUTTON ON THE NAV
   const changeRightNavContent = useCallback(() => {
     if (pathname.includes("session")) {
-      return <Button onClick={() => setOpenNewPlayer(true)}>ADD NEW SESSION</Button>
+      return <Link to={"/session"}><Button>ADD NEW SESSION</Button></Link>
     }
     if (pathname.includes("game")) {
-      return <Button onClick={() => setOpenNewSession(true)}>ADD NEW GAME</Button>
+      return <Link to={"/game"}><Button>ADD NEW GAME</Button></Link>
     }
     if (pathname.includes("player")) {
-      return <Button onClick={() => setOpenNewGame(true)}>ADD NEW PLAYER</Button>
+      return <Link to={"/player"}><Button>ADD NEW PLAYER</Button></Link>
     }
     if (pathname === "/") {
-      return <Button onClick={() =>  setOpenNewPlayer(true)}>ADD NEW GAME</Button>
+      return <Link to={"/game"}><Button>ADD NEW GAME</Button></Link>
     }
   }, [pathname])
 
@@ -49,15 +47,6 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     <main>
       <AppBar pathname={pathname} contentRight={changeRightNavContent()} />
       {children}
-      <Modal open={openNewPlayer} onClose={() => setOpenNewPlayer(false)}>
-        <Player closeAfterSubmit={() => setOpenNewPlayer(false)} />
-      </Modal>
-      <Modal open={openNewSession} onClose={() => setOpenNewSession(false)}>
-        <Player closeAfterSubmit={() => setOpenNewSession(false)} />
-      </Modal>
-      <Modal open={openNewGame} onClose={() => setOpenNewGame(false)}>
-        <Player closeAfterSubmit={() => setOpenNewGame(false)} />
-      </Modal>
     </main>
   );
 };
