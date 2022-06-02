@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./SessionCard.scss";
 
 type SessionCardType = {
@@ -5,24 +6,17 @@ type SessionCardType = {
   players?: string;
   startTime?: string;
   stopTime?: string;
-  setSessionDetail: React.Dispatch<React.SetStateAction<number | null>>;
-  setSessionModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const SessionCard = ({
   sessionId,
   players,
   startTime,
-  stopTime,
-  setSessionModal,
-  setSessionDetail,
+  stopTime
 }: SessionCardType) => {
-  const onHandleClick = (id: number) => {
-    setSessionModal(true);
-    setSessionDetail(id);
-  };
+
   return (
-    <div className="session-card" onClick={() => onHandleClick(sessionId)}>
+    <Link className="session-card" to={`/session/${sessionId}`}>
       <div className="session-id">
         <i className="bi bi-hash"></i>
         <h3>{sessionId}</h3>
@@ -39,7 +33,7 @@ const SessionCard = ({
           Ended at: <strong>{stopTime}</strong>
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

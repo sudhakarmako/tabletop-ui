@@ -1,17 +1,11 @@
 import { PlayerCard, SessionCard, SessionTitle } from "@components";
-import { Chip, Row, Col, Modal } from "@ui";
-import { Player } from "pages/player";
-import { useEffect, useState } from "react";
+import { Chip, Row, Col} from "@ui";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import { getPlayersAction } from "store/actions/player.actions";
-import Session from "./Session";
 
 const Sessions = () => {
-  const [sessionModal, setSessionModal] = useState<boolean>(false);
-  const [sessionDetail, setSessionDetail] = useState<number | null>(null);
-  const [playerModal, setPlayerModal] = useState<boolean>(false);
-  const [playerDetail, setPlayerDetail] = useState<number | null>(null);
   const {players} = useSelector((state:RootState) => state.player)
   const dispatch = useDispatch();
   
@@ -34,8 +28,7 @@ const Sessions = () => {
           Current Session: <strong>435</strong>
         </p>
       </Row>
-      <br />
-      <br />
+      <div className="session-margin_top">
       <Row align="flex-start">
         <Col sm={12} md={12} lg={5} xl={5} xxl={5}>
           {Array.apply(null, Array(10)).map(() => (
@@ -44,8 +37,6 @@ const Sessions = () => {
               players="24"
               startTime="12:24 PM"
               stopTime="14.35 PM"
-              setSessionModal={setSessionModal}
-              setSessionDetail={setSessionDetail}
             />
           ))}
         </Col>
@@ -56,8 +47,6 @@ const Sessions = () => {
               <Col sm={12} md={6} lg={6} xl={6} xxl={6}>
                 <PlayerCard
                   key={key}
-                  setPlayerModal={setPlayerModal}
-                  setPlayerDetail={setPlayerDetail}
                   player={player}
                 />
               </Col>
@@ -65,12 +54,7 @@ const Sessions = () => {
           </Row>
         </Col>
       </Row>
-      <Modal open={sessionModal} onClose={() => setSessionModal(false)}>
-        <Session sessionDetail={sessionDetail} />
-      </Modal>
-      <Modal open={playerModal} onClose={() => setPlayerModal(false)}>
-        <Player playerDetail={playerDetail}/>
-      </Modal>
+      </div>
     </>
   );
 };
