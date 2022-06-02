@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 //GET ALL SESSIONS
 export const getSessionsAction = createAsyncThunk(
-  "player/getPlayers",
+  "player/getSessions",
   async (payload: string | "", { rejectWithValue }) => {
     let req = [];
     try {
@@ -18,7 +18,7 @@ export const getSessionsAction = createAsyncThunk(
 
 // GET SINGLE SESSION
 export const getSessionAction = createAsyncThunk(
-  "player/getPlayers",
+  "player/getSessionById",
   async (payload: number, { rejectWithValue }) => {
     let req = [];
     try {
@@ -33,7 +33,7 @@ export const getSessionAction = createAsyncThunk(
 
 // ADD SESSION SINGLE
 export const addSessionAction = createAsyncThunk(
-  "player/addPlayer",
+  "player/createSessions",
   async (payload: {}, { rejectWithValue }) => {
     let req = [];
     try {
@@ -48,7 +48,7 @@ export const addSessionAction = createAsyncThunk(
 
 // UPDATE SINGLE SESSION
 export const updateSessionAction = createAsyncThunk(
-  "player/updatePlayer",
+  "player/updateSessions",
   async (payload: {id:number}, { rejectWithValue }) => {
     let req:any = [];
     try {
@@ -63,7 +63,7 @@ export const updateSessionAction = createAsyncThunk(
 
 // DELETE SESSION SINGLE
 export const deleteSessionAction = createAsyncThunk(
-  "player/deletePlayer",
+  "player/deleteSessionById",
   async (payload: {id:number}, { rejectWithValue }) => {
     let req:any = [];
     try {
