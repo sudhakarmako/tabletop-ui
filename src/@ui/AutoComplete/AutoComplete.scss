@@ -24,12 +24,14 @@
     }
   }
   .auto-options {
+    position: absolute;
     margin-top: 0.25em;
     max-height: 30vh;
     overflow-y: scroll;
     width: 100%;
     background-color: rgba($color: $primary, $alpha: 0.4);
     border: 1px solid rgba($color: $primary, $alpha: 0.6);
+    backdrop-filter: blur(20px);
     .auto-option {
       display: block;
       background-color: transparent;
