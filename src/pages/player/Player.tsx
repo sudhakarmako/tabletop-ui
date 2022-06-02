@@ -12,6 +12,7 @@ import {
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { RootState } from "store";
 import {
   addPlayerAction,
@@ -22,7 +23,6 @@ import "./Player.scss";
 
 type playerDetail = {
   playerDetail?: number | null;
-  closeAfterSubmit?: () => void;
 };
 type PlayerType = {
   id: number;
@@ -37,8 +37,9 @@ type PlayerType = {
   avatar: string;
 };
 
-const Player = ({ playerDetail, closeAfterSubmit }: playerDetail) => {
+const Player = ({ playerDetail }: playerDetail) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { players } = useSelector((state: RootState) => state.player);
   const [playerData, setPlayerData] = useState<PlayerType>({
     id: 0,
@@ -87,7 +88,7 @@ const Player = ({ playerDetail, closeAfterSubmit }: playerDetail) => {
       dispatch(updatePlayerAction(data));
     }
     dispatch(getPlayersAction(""));
-    closeAfterSubmit && closeAfterSubmit();
+    navigate("/players")
   };
 
   /**
