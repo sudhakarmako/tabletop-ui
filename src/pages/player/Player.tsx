@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonGroup,
   Chip,
   Col,
   DateInput,
@@ -81,6 +82,9 @@ const Player = ({ playerDetail }: playerDetail) => {
       phone_number: elements["phone_number"].value,
       is_active: elements["is_active"].value === "on" ? true : false,
     };
+    if(JSON.stringify(playerData) === JSON.stringify(data)){
+      return navigate("/players");
+    }
     if (elements["id"].value === "0") {
       // CREATE A NEW PLAYER
       dispatch(addPlayerAction(data));
@@ -112,14 +116,17 @@ const Player = ({ playerDetail }: playerDetail) => {
     <form className="single-player-container" onSubmit={handleSubmit}>
       <input type="hidden" name="id" value={playerData.id || 0} />
       <Row justify="space-between" align="flex-start">
-        {playerData.id ? (
+        {!!playerData.id ? (
           <Chip onClose={() => navigate("/players")} image={playerData.avatar}>
             {`${playerData.first_name} ${playerData.last_name}`}
           </Chip>
-        ) : (
+        ):(
           <div></div>
         )}
+        <ButtonGroup>
+        <Button type="button" onClick={() => navigate("/players")}>Go Back</Button>
         <Button type="submit">{playerData.id ? "    Update    " : "    Create    "}</Button>
+        </ButtonGroup>
       </Row>
       <div className="input-container">
         <Row align="flex-start">
