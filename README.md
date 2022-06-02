@@ -7,6 +7,11 @@ In the project directory, you can run:
 ### `yarn`
 
 To install all the requred package for this project
+
+### `yarn run start-server`
+Runs the local api server
+make sure this is ran first before runing `yarn start` to avoid and blank screen
+
 ### `yarn start`
 
 Runs the app in the development mode.\
