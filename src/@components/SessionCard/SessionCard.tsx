@@ -2,35 +2,36 @@ import { Link } from "react-router-dom";
 import "./SessionCard.scss";
 
 type SessionCardType = {
-  sessionId: number;
-  players?: string;
-  startTime?: string;
-  stopTime?: string;
+  session:   {
+    id: number,
+    gameId:number,
+    playerId: [],
+    created_at: string,
+    updated_at: string,
+    is_active: boolean
+  },
 };
 
 const SessionCard = ({
-  sessionId,
-  players,
-  startTime,
-  stopTime
+  session
 }: SessionCardType) => {
 
   return (
-    <Link className="session-card" to={`/session/${sessionId}`}>
+    <Link className="session-card" to={`/session/${session.id}`}>
       <div className="session-id">
         <i className="bi bi-hash"></i>
-        <h3>{sessionId}</h3>
+        <h3>{session.id}</h3>
       </div>
       <div className="session-players">
         <i className="bi bi-people"></i>
-        <h3>{players}</h3>
+        <h3>{session?.playerId?.length}</h3>
       </div>
       <div className="session-timings">
         <p>
-          Started at: <strong>{startTime}</strong>
+          Started at: <strong>{session.created_at}</strong>
         </p>
         <p>
-          Ended at: <strong>{stopTime}</strong>
+          Ended at: <strong>{session.updated_at}</strong>
         </p>
       </div>
     </Link>

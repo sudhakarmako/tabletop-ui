@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { getGamesAction } from "store/actions/game.actions";
 import { getPlayersAction } from "store/actions/player.actions";
+import { getSessionsAction } from "store/actions/session.actions";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   let { pathname } = useLocation();
@@ -13,6 +14,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     dispatch(getPlayersAction("?_sort=first_name&_order=ASC"));
     dispatch(getGamesAction("?_embed=session"))
+    dispatch(getSessionsAction("?_expand=game"))
   }, []);
 
   // CHANGES THE BACKGROUND IMAGE OF THE PAGE

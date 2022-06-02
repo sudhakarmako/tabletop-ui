@@ -1,42 +1,54 @@
 import { PlayerCard, SessionCard, SessionTitle } from "@components";
 import { Chip, Row, Col} from "@ui";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { RootState } from "store";
-import { getPlayersAction } from "store/actions/player.actions";
 
 const Sessions = () => {
+  const {sessions} = useSelector((state:RootState) => state.session)
   const {players} = useSelector((state:RootState) => state.player)
-  const dispatch = useDispatch();
+  const {games} = useSelector((state:RootState) => state.game)
+  const params = useParams();
+  const [gameData, setGameData] = useState({
+    id: 0,
+    title: "",
+    short_desc: "",
+    body: "",
+    thumb: "",
+    authour: "",
+    created_at:"",
+    updated_at: "",
+    is_active: false,
+    session:[],
+    slider: []
+  });
+  console.log(sessions, players, games);
   
   useEffect(() => {
-    dispatch(getPlayersAction(""))
-  }, []);
+    if(params && params.gameId && games.length){
+      const [game] = games.filter((g:any) => g.id === params.gameId);
+      setGameData(game);
+    }
+  }, [params, games]);
+
   return (
     <>
       <Row justify={"space-between"}>
         <Row>
-          <Chip
-            image={
-              "https://cf.geekdo-images.com/3HkjDovk8Yr2wMumcSUGog__itemrep/img/WE_jrFpy57ekZuiIKFIMpNfXIXQ=/fit-in/246x300/filters:strip_icc()/pic4843622.jpg"
-            }
-          >
-            Raiders of the North Sea
-          </Chip>
+          {params.gameId && gameData && gameData && <Chip image={gameData.thumb}>{gameData.title}</Chip>}
         </Row>
         <p>
-          Current Session: <strong>435</strong>
+          Current Session: <strong>{sessions.length}</strong>
         </p>
       </Row>
       <div className="session-margin_top">
       <Row align="flex-start">
         <Col sm={12} md={12} lg={5} xl={5} xxl={5}>
-          {Array.apply(null, Array(10)).map(() => (
+          {sessions.map((session, key) => (
             <SessionCard
-              sessionId={2452}
-              players="24"
-              startTime="12:24 PM"
-              stopTime="14.35 PM"
+              key={key}
+              session={session}
             />
           ))}
         </Col>
