@@ -2,7 +2,7 @@ import { API } from "@api";
 
 class SessionAPI extends API {
   constructor() {
-    super("/sessions");
+    super("/session");
   }
 
   /**
