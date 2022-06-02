@@ -64,10 +64,10 @@ export const updateSessionAction = createAsyncThunk(
 // DELETE SESSION SINGLE
 export const deleteSessionAction = createAsyncThunk(
   "player/deleteSessionById",
-  async (payload: {id:number}, { rejectWithValue }) => {
+  async (payload: number, { rejectWithValue }) => {
     let req:any = [];
     try {
-      req = await sessionAPI.deleteSessionById(payload.id);
+      req = await sessionAPI.deleteSessionById(payload);
     } catch (error) {
       req = [];
       rejectWithValue(error);

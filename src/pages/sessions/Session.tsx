@@ -7,6 +7,7 @@ import "./Session.scss";
 import dayjs from "dayjs";
 import {
   addSessionAction,
+  deleteSessionAction,
   getSessionsAction,
   updateSessionAction,
 } from "store/actions/session.actions";
@@ -118,18 +119,24 @@ const Session = () => {
       dispatch(updateSessionAction(payload)),
       dispatch(getPlayersAction("?_sort=is_active,first_name&_order=DESC,ASC")),
       dispatch(getSessionsAction("?_sort=is_active&_order=DESC&_expand=game")),
-    ]);
-    
+    ]); 
   }
-
+const handleDeleteSession =async (sessionId:number) => {
+  await Promise.all([
+    dispatch(deleteSessionAction(sessionId)),
+    dispatch(getSessionsAction("?_sort=is_active&_order=DESC&_expand=game")),
+  ]);
+  navigate("/sessions"); 
+}
   return (
     <div className="session-container">
-      <Row>
+      <Row justify="space-between">
         {!!session.id && (
           <Chip
-            onClose={() => navigate("/sessions")}
+            onClose={() => {handleDeleteSession(session.id)}}
           >{`Session: #${session.id}`}</Chip>
         )}
+        <Button onClick={() => navigate("/sessions")}>Go Back</Button>
       </Row>
       {session.game.title ? (
         <>

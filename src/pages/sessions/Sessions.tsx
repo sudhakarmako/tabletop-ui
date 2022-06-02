@@ -60,12 +60,12 @@ const Sessions = () => {
         <Row align="flex-start">
           {params.gameId
             ? sessionForGame.map((session, key) => (
-                <Col sm={12} md={12} lg={4} xl={4} xxl={4}>
+                <Col sm={12} md={12} lg={6} xl={4} xxl={4}>
                   <SessionCard key={key} session={session} />
                 </Col>
               ))
             : sessions.map((session, key) => (
-                <Col sm={12} md={12} lg={4} xl={4} xxl={4}>
+                <Col sm={12} md={12} lg={6} xl={4} xxl={4}>
                   <SessionCard key={key} session={session} />
                 </Col>
               ))}
