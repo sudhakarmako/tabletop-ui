@@ -1,6 +1,7 @@
 import { gameAPI } from "@api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+// GET ALL GAMES
 export const getGamesAction = createAsyncThunk(
   "game/getGames",
   async (payload: string | "", { rejectWithValue }) => {
@@ -15,6 +16,7 @@ export const getGamesAction = createAsyncThunk(
   }
 );
 
+// GET SINGLE GAME
 export const getGameAction = createAsyncThunk(
   "game/getGameById",
   async (payload: number, { rejectWithValue }) => {
@@ -29,6 +31,7 @@ export const getGameAction = createAsyncThunk(
   }
 );
 
+// CREATE SINGLE GAME
 export const addGameAction = createAsyncThunk(
   "game/createGames",
   async (payload: {}, { rejectWithValue }) => {
@@ -43,6 +46,7 @@ export const addGameAction = createAsyncThunk(
   }
 );
 
+// UPDATE SINGLE GAME
 export const updateGameAction = createAsyncThunk(
   "game/updateGames",
   async (payload: {id:number}, { rejectWithValue }) => {
@@ -57,6 +61,7 @@ export const updateGameAction = createAsyncThunk(
   }
 );
 
+// DELETE SINGLE GAME
 export const deleteGameAction = createAsyncThunk(
   "game/deleteGameById",
   async (payload: number, { rejectWithValue }) => {
