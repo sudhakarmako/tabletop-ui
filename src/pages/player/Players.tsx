@@ -18,21 +18,12 @@ const Players = () => {
   return (
     <>
       <Row justify={"space-between"}>
-        <Row>
-          {/* <Chip
-            image={
-              "https://cf.geekdo-images.com/3HkjDovk8Yr2wMumcSUGog__itemrep/img/WE_jrFpy57ekZuiIKFIMpNfXIXQ=/fit-in/246x300/filters:strip_icc()/pic4843622.jpg"
-            }
-          >
-            Raiders of the North Sea
-          </Chip> */}
-        </Row>
+        <div></div>
         <p>
           Total Players: <strong>{players.length}</strong>
         </p>
       </Row>
-      <br />
-      <br />
+      <div className="player-margin">
       <Row>
         {players.map((player, key) => (
           <Col sm={12} md={6} lg={4} xl={4} xxl={4}>
@@ -45,8 +36,9 @@ const Players = () => {
           </Col>
         ))}
       </Row>
+      </div>
       <Modal open={playerModal} onClose={() => setPlayerModal(false)}>
-        <Player playerDetail={playerDetail} />
+        <Player playerDetail={playerDetail} closeAfterSubmit={() => setPlayerModal(false)} />
       </Modal>
     </>
   );
