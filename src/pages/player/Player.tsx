@@ -113,7 +113,7 @@ const Player = ({ playerDetail }: playerDetail) => {
       <input type="hidden" name="id" value={playerData.id || 0} />
       <Row justify="space-between" align="flex-start">
         {playerData.id ? (
-          <Chip image={playerData.avatar}>
+          <Chip onClose={() => navigate("/players")} image={playerData.avatar}>
             {`${playerData.first_name} ${playerData.last_name}`}
           </Chip>
         ) : (
