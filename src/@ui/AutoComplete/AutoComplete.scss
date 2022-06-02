@@ -1,0 +1,50 @@
+@import "scss/variable.scss";
+.autocomplete {
+  position: relative;
+  display: inline-block;
+  margin: 0.25em 0;
+
+  .autocomplete-container {
+    input {
+      width: 15em;
+      background-color: rgba($color: $primary, $alpha: 0.4);
+      border: 1px solid rgba($color: $primary, $alpha: 0.6);
+      padding: 0.5em;
+      font-size: 1.25em;
+      line-height: 1.25em;
+      color: $white;
+      letter-spacing: 0.5px;
+      padding-right: 2em;
+    }
+    .ac-icon {
+      position: absolute;
+      right: 0;
+      line-height: 47px;
+      padding: 0 1em;
+    }
+  }
+  .auto-options {
+    margin-top: 0.25em;
+    max-height: 30vh;
+    overflow-y: scroll;
+    width: 100%;
+    background-color: rgba($color: $primary, $alpha: 0.4);
+    border: 1px solid rgba($color: $primary, $alpha: 0.6);
+    .auto-option {
+      display: block;
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      color: $white;
+      font-size: 1em;
+      text-align: left;
+      padding: 0.675em 0.75em;
+      transition-duration: 150ms;
+      &:hover {
+        background-color: rgba($color: $primary, $alpha: 0.4);
+        transition-duration: 150ms;
+        cursor: pointer;
+      }
+    }
+  }
+}

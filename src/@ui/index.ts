@@ -1,3 +1,4 @@
+export { AutoComplete } from "./AutoComplete";
 export { Container } from "./Container";
 export { Button } from "./Button";
 export { ButtonGroup } from "./ButtonGroup";
