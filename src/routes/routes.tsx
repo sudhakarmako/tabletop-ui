@@ -33,6 +33,10 @@ export const protectedRoutes: RouteObject[] = [
     element: <Game />,
   },
   {
+    path: "sessions/:gameId",
+    element: <Sessions />,
+  },
+  {
     path: "sessions",
     element: <Sessions />,
   },
