@@ -1,17 +1,11 @@
 import { PlayerCard } from "@components";
 import { Row, Col } from "@ui";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPlayersAction } from "store/actions/player.actions";
+import { useSelector } from "react-redux";
 import { RootState } from "store";
 
 const Players = () => {
   const { players } = useSelector((state: RootState) => state.player);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getPlayersAction("?_sort=first_name&_order=ASC"));
-  }, []);
   return (
     <>
       <Row justify={"space-between"}>

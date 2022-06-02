@@ -1,10 +1,19 @@
 import { AppBar } from "@components";
 import { Button } from "@ui";
 import { useCallback, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { getGamesAction } from "store/actions/game.actions";
+import { getPlayersAction } from "store/actions/player.actions";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   let { pathname } = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPlayersAction("?_sort=first_name&_order=ASC"));
+    dispatch(getGamesAction("?_embed=session"))
+  }, []);
 
   // CHANGES THE BACKGROUND IMAGE OF THE PAGE
   const changeBG = (pathname: string) => {
