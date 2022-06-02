@@ -11,7 +11,7 @@ export const gameSlice = createSlice({
   name: "game",
   initialState: {
     games: [],
-    status:'idle'
+    status: "idle",
   },
   reducers: {
     getGames: (state, action: PayloadAction<string>) => {
@@ -23,27 +23,66 @@ export const gameSlice = createSlice({
     },
     addGame: (state, action: PayloadAction<object>) => {
       // ADDING A SINGLE GAME
-      return addGameAction();
     },
     updateGame: (state, action: PayloadAction<object>) => {
       // UPDATE SINGLE GAME
-      return updateGameAction();
     },
     deleteGame: (state, action: PayloadAction<number>) => {
       // DELTE SINGLE GAME
-      return deleteGameAction();
     },
   },
-  extraReducers: builder => {
-    builder.addCase(getGamesAction.pending,(state,action) => {
-      state.status = 'loading'
-    }).addCase(getGamesAction.fulfilled, (state, action) => {
-      state.games = action.payload;
-      state.status = 'idle'
-    }).addCase(getGamesAction.rejected, (state, action )=>{
-      state.status = 'rejected'
-    })
-
+  extraReducers: (builder) => {
+    builder
+      .addCase(getGamesAction.pending, (state, action) => {
+        state.status = "loading";
+      })
+      .addCase(getGamesAction.fulfilled, (state, action) => {
+        state.games = action.payload;
+        state.status = "idle";
+      })
+      .addCase(getGamesAction.rejected, (state, action) => {
+        state.status = "rejected";
+      });
+    builder
+      .addCase(getGameAction.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getGameAction.fulfilled, (state, action) => {
+        state.status = "idle";
+      })
+      .addCase(getGameAction.rejected, (state) => {
+        state.status = "rejected";
+      });
+    builder
+      .addCase(addGameAction.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(addGameAction.fulfilled, (state) => {
+        state.status = "idle";
+      })
+      .addCase(addGameAction.rejected, (state) => {
+        state.status = "rejected";
+      });
+    builder
+      .addCase(updateGameAction.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(updateGameAction.fulfilled, (state) => {
+        state.status = "idle";
+      })
+      .addCase(updateGameAction.rejected, (state) => {
+        state.status = "rejected";
+      });
+    builder
+      .addCase(deleteGameAction.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteGameAction.fulfilled, (state) => {
+        state.status = "idle";
+      })
+      .addCase(deleteGameAction.rejected, (state) => {
+        state.status = "rejected";
+      });
   },
 });
 
