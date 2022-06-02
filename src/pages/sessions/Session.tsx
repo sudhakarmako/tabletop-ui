@@ -1,16 +1,39 @@
 import { AutoComplete, Button, Chip, Row } from "@ui";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "store";
 import "./Session.scss";
 import dayjs from "dayjs";
+import {
+  addSessionAction,
+  getSessionsAction,
+  updateSessionAction,
+} from "store/actions/session.actions";
+import { getPlayersAction } from "store/actions/player.actions";
+
+type SessionType = {
+  id: 0;
+  gameId: 0;
+  playerId: {}[];
+  created_at: "";
+  updated_at: "";
+  is_active: false;
+  game: {
+    title: "";
+    body: "";
+    authour: "";
+    created_at: "";
+    is_active: false;
+  };
+};
 
 const Session = () => {
   const params = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [playersData, setPlayersData] = useState([]);
-  const [session, setSession] = useState({
+  const [session, setSession] = useState<SessionType>({
     id: 0,
     gameId: 0,
     playerId: [],
@@ -30,6 +53,21 @@ const Session = () => {
   const { games } = useSelector((state: RootState) => state.game);
 
   useEffect(() => {
+    setSession({
+      id: 0,
+      gameId: 0,
+      playerId: [],
+      created_at: "",
+      updated_at: "",
+      is_active: false,
+      game: {
+        title: "",
+        body: "",
+        authour: "",
+        created_at: "",
+        is_active: false,
+      },
+    });
     if (params && params.sessionId && sessions.length) {
       const [selectedSession] = sessions.filter(
         (ses: any) => ses.id === Number(params.sessionId)
@@ -39,8 +77,39 @@ const Session = () => {
   }, [params, sessions]);
 
   useEffect(() => {
-    !!players.length && setPlayersData(players)
+    !!players.length && setPlayersData(players);
   }, [players]);
+
+  const handleSesssionCreate = async (gameId: number) => {
+    const [res]: any = await Promise.all([
+      dispatch(addSessionAction({ gameId })),
+      dispatch(getSessionsAction("?_sort=is_active&_order=DESC&_expand=game")),
+    ]);
+    navigate(`/session/${res.payload.id}`);
+  };
+  const handleAddPlayerToSession = async (playerId: number) => {
+    let payload = {...session};
+    if (Array.isArray(payload.playerId)) {
+      const temp = [...payload.playerId, {
+        id:playerId,
+        joined_at: dayjs(),
+        left_at: dayjs(),
+      }]
+      payload.playerId = temp;
+    } else {
+      payload.playerId = new Array(
+        {
+          id:playerId,
+          joined_at: dayjs(),
+          left_at: dayjs(),
+        });
+    }
+   await Promise.all([
+      dispatch(updateSessionAction(payload)),
+      dispatch(getPlayersAction("?_sort=is_active,first_name&_order=DESC,ASC")),
+      dispatch(getSessionsAction("?_sort=is_active&_order=DESC&_expand=game")),
+    ]);
+  };
 
   return (
     <div className="session-container">
@@ -72,51 +141,54 @@ const Session = () => {
           </ul>
         </>
       ) : (
-        <>
-        <Button>
-          <i className="bi bi-plus"></i> Add Game
-        </Button>
         <AutoComplete
-        data={games}
-        onSelected={data => console.log(data)}
-        searchKey={["title"]}
-        placeholder={'Search for Games...'}
-      />
-      </>
-      )}
-      <h2 className="player">
-        Players
-        <span>
-          <i className="bi bi-people"></i>
-          {session.playerId.length}
-        </span>
-      </h2>
-      <Row>
-        {!!players.length &&
-          session.playerId.map((player: { id: number }, key) => {
-            const [chip]: {
-              first_name: string;
-              avatar: string;
-              last_name: string;
-            }[] = players.filter((pl: any) => pl.id === player.id);
-            return (
-              chip && (
-                <Chip key={key} image={chip.avatar}>
-                  {`${chip.first_name} ${chip.last_name}`}
-                </Chip>
-              )
-            );
-          })}
-        <Button>
-          <i className="bi bi-plus"></i> Add Player
-        </Button>
-      </Row>
-        <AutoComplete
-          data={players}
-          onSelected={data => console.log(data)}
-          searchKey={["first_name"]}
-          placeholder={'Search for players...'}
+          data={games}
+          onSelected={(data: any) => handleSesssionCreate(Number(data.id))}
+          searchKey={["title"]}
+          placeholder={"Search for Games..."}
         />
+      )}
+      {!!session.id && (
+        <>
+          <h2 className="player">
+            Players
+            <span>
+              <i className="bi bi-people"></i>
+              {session?.playerId?.length}
+            </span>
+          </h2>
+          <AutoComplete
+            data={players}
+            onSelected={(data: any) =>
+              handleAddPlayerToSession(Number(data.id))
+            }
+            searchKey={["first_name"]}
+            placeholder={"Search for players..."}
+          />
+          <br />
+          <br />
+          <Row>
+            {!!players.length &&
+              !!session?.playerId?.length &&
+              session.playerId.map((player: any, key) => {
+                const [chip]: {
+                  first_name: string;
+                  avatar: string;
+                  last_name: string;
+                }[] = players.filter((pl: any) => pl.id === player.id);
+                console.log("chip", player, chip);
+                
+                return (
+                  chip && (
+                    <Chip key={key} image={chip.avatar}>
+                      {`${chip.first_name} ${chip.last_name}`}
+                    </Chip>
+                  )
+                );
+              })}
+          </Row>
+        </>
+      )}
     </div>
   );
 };

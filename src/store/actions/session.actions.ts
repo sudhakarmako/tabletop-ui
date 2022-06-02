@@ -49,7 +49,7 @@ export const addSessionAction = createAsyncThunk(
 // UPDATE SINGLE SESSION
 export const updateSessionAction = createAsyncThunk(
   "player/updateSessions",
-  async (payload: {id:number}, { rejectWithValue }) => {
+  async (payload: any, { rejectWithValue }) => {
     let req:any = [];
     try {
       req = await sessionAPI.updateSessions(payload.id, payload);
