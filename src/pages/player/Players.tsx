@@ -13,7 +13,7 @@ const Players = () => {
   const dispatch = useDispatch();
   
   useEffect(() => {
-    dispatch(getPlayersAction(""))
+    dispatch(getPlayersAction("?_sort=first_name&_order=ASC"))
   }, []);
   return (
     <>

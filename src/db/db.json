@@ -259,12 +259,12 @@
       "id": 2,
       "first_name": "Devina",
       "last_name": "Hinrichsen",
-      "dob": "2/21/2022",
-      "age": 113,
-      "phone_number": "(480) 1799395",
+      "dob": "2022-02-21",
+      "age": "13",
+      "phone_number": "(480) 1799392",
       "created_at": "5/31/2021",
-      "updated_at": "12/2/2021",
-      "is_active": false,
+      "updated_at": "2022-06-02",
+      "is_active": true,
       "avatar": "http://dummyimage.com/165x165.png/5fa2dd/ffffff"
     },
     {
@@ -283,12 +283,13 @@
       "id": 4,
       "first_name": "Ulick",
       "last_name": "Quail",
-      "dob": "12/3/2021",
-      "age": 97,
+      "dob": "2021-12-03",
+      "age": "97",
       "created_at": "2/22/2022",
-      "updated_at": "7/18/2021",
-      "is_active": false,
-      "avatar": "http://dummyimage.com/165x165.png/cc0000/ffffff"
+      "updated_at": "2022-06-02",
+      "is_active": true,
+      "avatar": "http://dummyimage.com/165x165.png/cc0000/ffffff",
+      "phone_number": "8072541634"
     },
     {
       "id": 5,
@@ -317,12 +318,12 @@
       "id": 7,
       "first_name": "Remus",
       "last_name": "Ambler",
-      "dob": "7/13/2021",
-      "age": 104,
+      "dob": "2021-07-13",
+      "age": "75",
       "phone_number": "(882) 5059565",
       "created_at": "6/19/2021",
-      "updated_at": "12/18/2021",
-      "is_active": false,
+      "updated_at": "2022-06-02",
+      "is_active": true,
       "avatar": "http://dummyimage.com/165x165.png/cc0000/ffffff"
     },
     {
@@ -432,6 +433,17 @@
       "updated_at": "5/5/2022",
       "is_active": false,
       "avatar": "http://dummyimage.com/165x165.png/dddddd/000000"
+    },
+    {
+      "dob": "2022-06-03",
+      "id": 17,
+      "age": "0",
+      "avatar": "http://dummyimage.com/165x165.png/ff4444/ffffff",
+      "last_name": "Beeston",
+      "updated_at": "2022-06-02",
+      "first_name": "Starr",
+      "phone_number": "(509) 3028359\t",
+      "is_active": true
     }
   ],
   "session": [
