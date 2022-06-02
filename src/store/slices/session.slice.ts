@@ -42,16 +42,16 @@ export const sessionSlice = createSlice({
       .addCase(getSessionsAction.rejected, (state, action) => {
         state.status = "rejected";
       });
-    builder
-      .addCase(getSessionAction.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(getSessionAction.fulfilled, (state, action) => {
-        state.status = "idle";
-      })
-      .addCase(getSessionAction.rejected, (state) => {
-        state.status = "rejected";
-      });
+    // builder
+    //   .addCase(getSessionAction.pending, (state) => {
+    //     state.status = "loading";
+    //   })
+    //   .addCase(getSessionAction.fulfilled, (state, action) => {
+    //     state.status = "idle";
+    //   })
+    //   .addCase(getSessionAction.rejected, (state) => {
+    //     state.status = "rejected";
+    //   });
     builder
       .addCase(addSessionAction.pending, (state) => {
         state.status = "loading";
