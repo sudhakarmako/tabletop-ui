@@ -64,10 +64,10 @@ export const updatePlayerAction = createAsyncThunk(
 // DELTE PLAYER SINGEL
 export const deletePlayerAction = createAsyncThunk(
   "player/deletePlayer",
-  async (payload: {id:number}, { rejectWithValue }) => {
+  async (payload: number, { rejectWithValue }) => {
     let req:any = [];
     try {
-      req = await playerAPI.deletePlayerById(payload.id);
+      req = await playerAPI.deletePlayerById(payload);
     } catch (error) {
       req = [];
       rejectWithValue(error);

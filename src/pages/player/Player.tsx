@@ -17,6 +17,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "store";
 import {
   addPlayerAction,
+  deletePlayerAction,
   getPlayersAction,
   updatePlayerAction,
 } from "store/actions/player.actions";
@@ -112,12 +113,18 @@ const Player = ({ playerDetail }: playerDetail) => {
     setPlayerData({ ...playerData, is_active: value });
   };
 
+  const handleDeletePlayer = async (playerId:number) => {
+    await Promise.all([
+      dispatch(deletePlayerAction(playerId)),
+      dispatch(getPlayersAction("?_sort=is_active,first_name&_order=DESC,ASC"))
+    ])
+  }
   return (
     <form className="single-player-container" onSubmit={handleSubmit}>
       <input type="hidden" name="id" value={playerData.id || 0} />
       <Row justify="space-between" align="flex-start">
         {!!playerData.id ? (
-          <Chip onClose={() => navigate("/players")} image={playerData.avatar}>
+          <Chip onClose={() => {handleDeletePlayer(playerData.id);navigate("/players")}} image={playerData.avatar}>
             {`${playerData.first_name} ${playerData.last_name}`}
           </Chip>
         ):(

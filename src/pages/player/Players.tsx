@@ -11,7 +11,7 @@ const Players = () => {
   useEffect(() => {
     const cur_player = players.filter((pl:any) => pl.is_active);
     setCurrentPlayers(cur_player.length)
-  }, []);
+  }, [players]);
   return (
     <>
       <Row justify={"space-between"}>
