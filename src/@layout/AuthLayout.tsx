@@ -12,7 +12,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPlayersAction("?_sort=first_name&_order=ASC"));
+    dispatch(getPlayersAction("?_sort=is_active,first_name&_order=DESC,ASC"));
     dispatch(getGamesAction("?_embed=session"))
     dispatch(getSessionsAction("?_sort=is_active&_order=DESC&_expand=game"))
   }, []);
