@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./GameCard.scss";
 
 type GameCardType = {
@@ -28,8 +29,8 @@ const GameCard = ({ game, setGameId, setGameModal }: GameCardType) => {
     setGameModal(true);
   };
   return (
-    <div className="card" key={game.id} onClick={() => onHandleClick(game.id)}>
-      <div className="card-img-container">
+    <div className="card" key={game.id}>
+      <div className="card-img-container" onClick={() => onHandleClick(game.id)}>
         <div
           className="card-img"
           style={{
@@ -44,9 +45,9 @@ const GameCard = ({ game, setGameId, setGameModal }: GameCardType) => {
           <strong>more</strong>
         </p>
       </div>
-      <div className="card-action">
+      <Link to={`/sessions/${game.id}`} className="card-action">
         <span className="count">{game?.session?.length  || 0}</span> <span>Sessions</span>
-      </div>
+      </Link>
     </div>
   );
 };
