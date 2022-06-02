@@ -1,4 +1,4 @@
-import { Chip, Row } from "@ui";
+import { AutoComplete, Button, Chip, Row } from "@ui";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 const Session = () => {
   const params = useParams();
   const navigate = useNavigate();
+  const [playersData, setPlayersData] = useState([]);
   const [session, setSession] = useState({
     id: 0,
     gameId: 0,
@@ -26,6 +27,7 @@ const Session = () => {
   });
   const { sessions } = useSelector((state: RootState) => state.session);
   const { players } = useSelector((state: RootState) => state.player);
+  const { games } = useSelector((state: RootState) => state.game);
 
   useEffect(() => {
     if (params && params.sessionId && sessions.length) {
@@ -36,30 +38,52 @@ const Session = () => {
     }
   }, [params, sessions]);
 
+  useEffect(() => {
+    !!players.length && setPlayersData(players)
+  }, [players]);
+
   return (
     <div className="session-container">
       <Row>
-        <Chip
-          onClose={() => navigate("/sessions")}
-        >{`Session: #${session.id}`}</Chip>
+        {!!session.id && (
+          <Chip
+            onClose={() => navigate("/sessions")}
+          >{`Session: #${session.id}`}</Chip>
+        )}
       </Row>
-      <h2>{session.game.title}</h2>
-      <p>{session.game.body}</p>
-      <h4>More info:</h4>
-      <ul className="session-game-meta">
-        <li>
-          <strong>Authour : </strong>
-          {session.game.authour}
-        </li>
-        <li>
-          <strong>Created on : </strong>
-          {dayjs(session.game.created_at).format("DD-MMM-YYYY")}
-        </li>
-        <li>
-          <strong>Active : </strong>
-          {session.game.is_active ? "Yes" : "No"}
-        </li>
-      </ul>
+      {session.game.title ? (
+        <>
+          <h2>{session.game.title}</h2>
+          <p>{session.game.body}</p>
+          <h4>More info:</h4>
+          <ul className="session-game-meta">
+            <li>
+              <strong>Authour : </strong>
+              {session.game.authour}
+            </li>
+            <li>
+              <strong>Created on : </strong>
+              {dayjs(session.game.created_at).format("DD-MMM-YYYY")}
+            </li>
+            <li>
+              <strong>Active : </strong>
+              {session.game.is_active ? "Yes" : "No"}
+            </li>
+          </ul>
+        </>
+      ) : (
+        <>
+        <Button>
+          <i className="bi bi-plus"></i> Add Game
+        </Button>
+        <AutoComplete
+        data={games}
+        onSelected={data => console.log(data)}
+        searchKey={["title"]}
+        placeholder={'Search for Games...'}
+      />
+      </>
+      )}
       <h2 className="player">
         Players
         <span>
@@ -83,7 +107,16 @@ const Session = () => {
               )
             );
           })}
+        <Button>
+          <i className="bi bi-plus"></i> Add Player
+        </Button>
       </Row>
+        <AutoComplete
+          data={players}
+          onSelected={data => console.log(data)}
+          searchKey={["first_name"]}
+          placeholder={'Search for players...'}
+        />
     </div>
   );
 };
