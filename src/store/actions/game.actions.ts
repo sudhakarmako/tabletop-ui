@@ -14,7 +14,59 @@ export const getGamesAction = createAsyncThunk(
     return req;
   }
 );
-export const getGameAction = () => console.log("getGameActions");
-export const addGameAction = () => console.log("addGameActions");
-export const updateGameAction = () => console.log("updateGameActions");
-export const deleteGameAction = () => console.log("deleteGameActions");
+
+export const getGameAction = createAsyncThunk(
+  "game/getGameById",
+  async (payload: number, { rejectWithValue }) => {
+    let req: [];
+    try {
+      req = await gameAPI.getGameById(payload);
+    } catch (error) {
+      req = [];
+      rejectWithValue(error);
+    }
+    return req;
+  }
+);
+
+export const addGameAction = createAsyncThunk(
+  "game/createGames",
+  async (payload: {}, { rejectWithValue }) => {
+    let req: [];
+    try {
+      req = await gameAPI.createGames(payload);
+    } catch (error) {
+      req = [];
+      rejectWithValue(error);
+    }
+    return req;
+  }
+);
+
+export const updateGameAction = createAsyncThunk(
+  "game/updateGames",
+  async (payload: {id:number}, { rejectWithValue }) => {
+    let req: [];
+    try {
+      req = await gameAPI.updateGames(payload.id, payload);
+    } catch (error) {
+      req = [];
+      rejectWithValue(error);
+    }
+    return req;
+  }
+);
+
+export const deleteGameAction = createAsyncThunk(
+  "game/deleteGameById",
+  async (payload: number, { rejectWithValue }) => {
+    let req: [];
+    try {
+      req = await gameAPI.deleteGameById(payload);
+    } catch (error) {
+      req = [];
+      rejectWithValue(error);
+    }
+    return req;
+  }
+);
