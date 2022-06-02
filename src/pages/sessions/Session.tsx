@@ -110,6 +110,17 @@ const Session = () => {
       dispatch(getSessionsAction("?_sort=is_active&_order=DESC&_expand=game")),
     ]);
   };
+  const handleRemovePlayerFromSession = async (playerId:number) => {
+    const otherPlayers = session.playerId.filter((pl:any)=> pl.id !== playerId);
+    let payload = {...session};
+    payload.playerId = otherPlayers;
+    await Promise.all([
+      dispatch(updateSessionAction(payload)),
+      dispatch(getPlayersAction("?_sort=is_active,first_name&_order=DESC,ASC")),
+      dispatch(getSessionsAction("?_sort=is_active&_order=DESC&_expand=game")),
+    ]);
+    
+  }
 
   return (
     <div className="session-container">
@@ -172,15 +183,14 @@ const Session = () => {
               !!session?.playerId?.length &&
               session.playerId.map((player: any, key) => {
                 const [chip]: {
+                  id:number,
                   first_name: string;
                   avatar: string;
                   last_name: string;
                 }[] = players.filter((pl: any) => pl.id === player.id);
-                console.log("chip", player, chip);
-                
                 return (
                   chip && (
-                    <Chip key={key} image={chip.avatar}>
+                    <Chip key={key} image={chip.avatar} onClose={() => handleRemovePlayerFromSession(chip.id)}>
                       {`${chip.first_name} ${chip.last_name}`}
                     </Chip>
                   )
