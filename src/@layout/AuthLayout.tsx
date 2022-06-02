@@ -14,7 +14,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     dispatch(getPlayersAction("?_sort=first_name&_order=ASC"));
     dispatch(getGamesAction("?_embed=session"))
-    dispatch(getSessionsAction("?_expand=game"))
+    dispatch(getSessionsAction("?_sort=is_active&_order=DESC&_expand=game"))
   }, []);
 
   // CHANGES THE BACKGROUND IMAGE OF THE PAGE
