@@ -3,7 +3,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./AppBar.scss";
-const AppBar = ({ pathname }: { pathname: string }) => {
+const AppBar = ({
+  pathname,
+  contentRight,
+}: {
+  pathname: string;
+  contentRight: React.ReactNode;
+}) => {
   const [indicatorPos, setIndicatorPos] = useState({ width: 108, left: 0 });
 
   const moveIndicator = (e: any) => {
@@ -36,13 +42,11 @@ const AppBar = ({ pathname }: { pathname: string }) => {
           <div className="nav-indicator" style={indicatorPos}></div>
         </ul>
         <ul className="nav-list nav-right">
+          <li className="nav-item">{contentRight}</li>
           <li className="nav-item">
             <Button>
               <i className="bi bi-search"></i>
             </Button>
-          </li>
-          <li className="nav-item">
-            <Button>ADD NEW GAME</Button>
           </li>
           <li className="nav-item">
             <Button>
