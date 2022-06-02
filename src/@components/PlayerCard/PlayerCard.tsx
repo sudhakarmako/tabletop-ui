@@ -26,7 +26,7 @@ const PlayerCard = ({
     setPlayerDetail(id);
   };
   return (
-    <div className="player-container">
+    <div className={`player-container ${!player.is_active && "player-inactive"}`}>
       <div className="player-content">
         {!!player.avatar && (
           <img className="player-image" src={player.avatar} alt="player" />

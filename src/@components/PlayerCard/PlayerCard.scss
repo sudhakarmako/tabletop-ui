@@ -7,6 +7,10 @@
     border: 1px solid rgba($color: $primary, $alpha: 0.8);
 }
 
+.player-inactive{
+    opacity: 0.5;
+}
+
 .player-image {
     width: 3.5em;
     height: 3.5em;
