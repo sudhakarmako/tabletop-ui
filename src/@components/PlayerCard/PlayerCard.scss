@@ -49,6 +49,7 @@
         cursor: pointer;
         opacity: 0.8;
         transition: 150ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        width: 100%;
 
         &.edit-player{
             &:hover {

@@ -30,14 +30,16 @@ const PlayerCard = ({
         </div>
       </div>
       <div className="player-action">
-       <Link to={`/session/${player.id}`}>
+       <Link to={`/player/${player.id}`}>
        <button className="edit-player">
           <i className="bi bi-pencil-square"></i> Edit
         </button>
         </Link>
+        <Link to={`/player/${player.id}`}>
         <button className="remove-player">
           <i className="bi bi-person-dash"></i> Remove
         </button>
+        </Link>
       </div>
     </div>
   );

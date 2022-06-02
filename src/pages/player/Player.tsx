@@ -12,7 +12,7 @@ import {
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { RootState } from "store";
 import {
   addPlayerAction,
@@ -40,6 +40,7 @@ type PlayerType = {
 const Player = ({ playerDetail }: playerDetail) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
   const { players } = useSelector((state: RootState) => state.player);
   const [playerData, setPlayerData] = useState<PlayerType>({
     id: 0,
@@ -55,12 +56,12 @@ const Player = ({ playerDetail }: playerDetail) => {
   });
 
   useEffect(() => {
-    if (playerDetail && players.length) {
+    if (params && params.playerId && players.length) {
       // GET A SINGLE PLAYER FROM THE PLAYERS STATE
-      const [player] = players.filter((pl: any) => pl.id === playerDetail);
+      const [player] = players.filter((pl: any) => pl.id === Number(params.playerId));
       setPlayerData(player);
     }
-  }, [playerDetail, players]);
+  }, [players, params]);
 
   /**
    * SUBMITS PLAYER FORM DATA
