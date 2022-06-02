@@ -3,8 +3,9 @@ import "./Chip.scss";
 type ChipInteface = {
   image?: string;
   children?: string;
+  onClose?: (() => void)
 };
-const Chip = ({ image, children }: ChipInteface) => {
+const Chip = ({ image, children, onClose }: ChipInteface) => {
   return (
     <div className="chip-container">
       {!!image && <img className="chip-image" src={image} alt="chip" />}
@@ -13,9 +14,9 @@ const Chip = ({ image, children }: ChipInteface) => {
           ? children?.substring(0, 26) + "..."
           : children}
       </div>
-      <div className="chip-close">
+      <button className="chip-close" onClick={onClose}>
         <i className="bi bi-x-lg"></i>
-      </div>
+      </button>
     </div>
   );
 };

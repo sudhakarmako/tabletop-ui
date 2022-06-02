@@ -31,6 +31,8 @@
 }
 
 .chip-close {
+    background-color: transparent;
+    border: none;
     margin-inline-start: 1em;
     color: $primary;
     font-weight: bold;
@@ -38,4 +40,5 @@
     line-height: 0.6em;
     margin: 0.5em;
     margin-left: 1em;
+    cursor: pointer;
 }
